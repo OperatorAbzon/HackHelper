@@ -3,10 +3,10 @@ TEST_STRING=""
 
 usage() {
 	echo ""
-        echo "This is 0ctopus. A hacking helper script."
+        echo "This is HackHelper. A hacking helper script."
 	echo "It either provides help with information, or runs tools for you."
 	echo ""
-	echo "These are the flags for 0ctopus."
+	echo "These are the flags for HackHelper."
 	echo ""
 	echo "	Non-hacking related tools: -f <tool-name>"
 	echo "	General tips, methods and procedures: -g <tool-name>"
