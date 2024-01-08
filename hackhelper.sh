@@ -26,6 +26,7 @@ list_tools() {
 	echo "	gobuster"
 	echo "	nc"
 	echo "	nmap"
+	echo "	rustscan"
 	echo "	searchsploit"
 	echo "	showmount"
 	echo "	sudo"
@@ -48,6 +49,10 @@ list_tools() {
 	echo "	jq"
 
 
+}
+
+func_rustscan() {
+	./tools/rustscan.sh
 }
 
 func_unshadow() {
@@ -150,6 +155,8 @@ while getopts "lt:g:f:h" opt; do
 				func_nc
 			elif [[ "$OPTARG" == "nmap" ]]; then
 				func_nmap
+			elif [[ "$OPTARG" == "rustscan" ]]; then
+				func_rustscan
 			elif [[ "$OPTARG" == "searchsploit" ]]; then
 				func_searchsploit
 			elif [[ "$OPTARG" == "showmount" ]]; then
