@@ -21,12 +21,15 @@ list_tools() {
 	echo "Tools and Procedures supported by 0ctopus, in alphabetical order:"
 	echo ""
 	echo "Tools (-t flag):"
+	echo "	enum4linux"
+	echo "	ffuf"
 	echo "	gobuster"
 	echo "	nc"
 	echo "	nmap"
 	echo "	searchsploit"
 	echo "	showmount"
 	echo "	sudo"
+	echo "	unshadow"
 	echo "	wfuzz"
 	echo ""
 	echo ""
@@ -45,6 +48,18 @@ list_tools() {
 	echo "	jq"
 
 
+}
+
+func_unshadow() {
+	./tools/unshadow.sh
+}
+
+func_enum4linux() {
+	./tools/enum4linux.sh
+}
+
+func_ffuf() {
+	./tools/ffuf.sh
 }
 
 tips_filetransfer() {
@@ -127,6 +142,10 @@ while getopts "lt:g:f:h" opt; do
 		t)
 			if [[ "$OPTARG" == "gobuster" ]]; then
 				func_gobuster
+			elif [[ "$OPTARG" == "enum4linux" ]]; then
+				func_enum4linux
+			elif [[ "$OPTARG" == "ffuf" ]]; then
+				func_ffuf
 			elif [[ "$OPTARG" == "nc" ]]; then
 				func_nc
 			elif [[ "$OPTARG" == "nmap" ]]; then
@@ -137,6 +156,8 @@ while getopts "lt:g:f:h" opt; do
 				func_showmount
 			elif [[ "$OPTARG" == "sudo" ]]; then
 				func_sudo
+			elif [[ "$OPTARG" == "unshadow" ]]; then
+				func_unshadow
 			elif [[ "$OPTARG" == "wfuzz" ]]; then
 				func_wfuzz
 			fi
