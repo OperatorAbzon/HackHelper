@@ -11,6 +11,7 @@ echo ""
 echo "	(00) Websites you can use"
 echo "		GTFObins: https://gtfobins.github.io/"
 echo "		Linux Kernel CVEs: https://www.linuxkernelcves.com/cves"
+
 echo ""
 echo "	(1) Use linpeass.sh. A general privilege escalation scan"
 echo "		linpeass.sh"

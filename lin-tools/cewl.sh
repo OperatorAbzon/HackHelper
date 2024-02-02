@@ -1,0 +1,10 @@
+#!/bin/bash
+echo ""
+echo "How to generate wordlists using cewl based on a certain website"
+echo ""
+echo "	(0) Syntax"
+echo "		cewl [flags] <url>"
+echo ""
+echo "	(1) Generate simple wordlist and write to a file"
+echo "		cewl -w <wordlist-output-name> -n <url>"
+echo "			-n to not output the list to stdout"

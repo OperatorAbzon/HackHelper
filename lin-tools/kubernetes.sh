@@ -1,0 +1,17 @@
+#!/bin/bash
+echo ""
+echo "Below are some commands for Kubernetes which may be useful"
+echo ""
+echo "	(1) Get information about the cluster"
+echo "		kubectl cluster-info"
+echo ""
+echo "	(2) Get resources in cluster from inside a container with curl"
+echo "		curl https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/pods -k"
+echo "			if -k option is not permitted, then omit it"
+echo "			If getting 403 errors, then anonymous (-k) requests are permitted but we do not"
+echo "			have enough permissions for that operation."
+echo ""
+echo "			Same command for getting services, namespaces, etc"
+echo ""
+echo ""
+

@@ -21,9 +21,13 @@ list_tools() {
 	echo "Tools and Procedures supported by 0ctopus, in alphabetical order:"
 	echo ""
 	echo "Tools (-t flag):"
+	echo "	cewl"
 	echo "	enum4linux"
 	echo "	ffuf"
 	echo "	gobuster"
+	echo "	hashid"
+	echo "	hydra"
+	echo "	kubernetes"
 	echo "	nc"
 	echo "	nmap"
 	echo "	rustscan"
@@ -35,15 +39,16 @@ list_tools() {
 	echo ""
 	echo ""
 	echo "Procedures (-g flag):"
-	echo "	bettershell , Get a better shell when you have established a revshell"
-	echo "	file-transfer , Transfer files or tools"
-	echo "	general , General help"
-	echo "	revshell , Generating and getting a reverse shell"
-	echo "	privesc , Privilege escalation"
-	echo "	passiverecon , Passive Reconnaisance"
+	echo "	lin-bettershell , (Linux) Get a better shell when you have established a revshell"
+	echo "	lin-file-transfer ,(Linux) Transfer files or tools"
+	echo "	lin-general , (Linux) General help"
+	echo "	lin-revshell , (Linux) Generating and getting a reverse shell"
+	echo "	lin-privesc , (Linux) Privilege escalation"
+	echo "	lin-passiverecon , (Linux) Passive Reconnaisance"
 	echo "	ports , Which tools can be good to use when specific ports are open?"
-	echo "	strategy , A guide to the strategy on how to do a pentest/hack of a box"
+	echo "	lin-strategy , (Linux) A guide to the strategy on how to do a pentest/hack of a box"
 	echo ""
+	echo "	win-privesc , (Windows) Privilege Escalation"
 	echo ""
 	echo "Tools, not hacking related (-f flag)"
 	echo "	jq"
@@ -51,89 +56,108 @@ list_tools() {
 
 }
 
+func_kubernetes() {
+	./lin-tools/kubernetes.sh
+}
+
+func_hydra() {
+	./lin-tools/hydra.sh
+}
+
+func_cewl() {
+	./lin-tools/cewl.sh
+}
+
+func_hashid() {
+	./lin-tools/hashid.sh
+}
+
 func_rustscan() {
-	./tools/rustscan.sh
+	./lin-tools/rustscan.sh
 }
 
 func_unshadow() {
-	./tools/unshadow.sh
+	./lin-tools/unshadow.sh
 }
 
 func_enum4linux() {
-	./tools/enum4linux.sh
+	./lin-tools/enum4linux.sh
 }
 
 func_ffuf() {
-	./tools/ffuf.sh
+	./lin-tools/ffuf.sh
 }
 
 tips_filetransfer() {
-	./guides/filetransfer.sh
+	./lin-guides/filetransfer.sh
 }
 
 tips_general() {
-	./guides/general.sh
+	./lin-guides/general.sh
 }
 
 func_gobuster() {
-	./tools/gobuster.sh
+	./lin-tools/gobuster.sh
 }
 
 func_linpeass() {
-	./tools/linpeas.sh
+	./lin-tools/linpeas.sh
 }
 
 func_nc() {
-	./tools/netcat.sh
+	./lin-tools/netcat.sh
 }
 
 func_nmap() {
-	./tools/nmap.sh
+	./lin-tools/nmap.sh
 }
 
 tips_revshell() {
-	./guides/revshell.sh
+	./lin-guides/revshell.sh
 }
 
 tips_privesc() {
-	./guides/privesc.sh
+	./lin-guides/privesc.sh
 }
 
 tips_strategy() {
-	./guides/strategy.sh
+	./lin-guides/strategy.sh
 }
 
 func_searchsploit() {
-	./tools/searchsploit.sh
+	./lin-tools/searchsploit.sh
 }
 
 func_showmount() {
-	./tools/showmount.sh
+	./lin-tools/showmount.sh
 }
 
 tips_passiverecon() {
-	./guides/passiverecon.sh
+	./lin-guides/passiverecon.sh
 }
 
 func_sudo() {
-	./tools/sudo.sh
+	./lin-tools/sudo.sh
 }
 
 func_wfuzz() {
-	./tools/wfuzz.sh
+	./lin-tools/wfuzz.sh
 }
 
 tips_ports() {
-	./guides/ports.sh
-
+	./lin-guides/ports.sh
 }
 
 func_jq() {
-	./tools/jq.sh
+	./lin-tools/jq.sh
 }
 
 tips_bettershell() {
-	./guides/bettershell.sh
+	./lin-guides/bettershell.sh
+}
+
+tips_winprivesc() {
+	./win-guides/win-privesc.sh
 }
 
 while getopts "lt:g:f:h" opt; do
@@ -147,6 +171,14 @@ while getopts "lt:g:f:h" opt; do
 		t)
 			if [[ "$OPTARG" == "gobuster" ]]; then
 				func_gobuster
+			elif [[ "$OPTARG" == "hashid" ]]; then
+				func_hashid
+			elif [[ "$OPTARG" == "kubernetes" ]]; then
+				func_kubernetes
+			elif [[ "$OPTARG" == "hydra" ]]; then
+				func_hydra	
+			elif [[ "$OPTARG" == "cewl" ]]; then
+				func_cewl
 			elif [[ "$OPTARG" == "enum4linux" ]]; then
 				func_enum4linux
 			elif [[ "$OPTARG" == "ffuf" ]]; then
@@ -171,24 +203,26 @@ while getopts "lt:g:f:h" opt; do
 			;;
 
 		g)
-			if [[ "$OPTARG" == "general" ]]; then
+			if [[ "$OPTARG" == "lin-general" ]]; then
 				tips_general
-			elif [[ "$OPTARG" == bettershell ]]; then
+			elif [[ "$OPTARG" == "lin-bettershell" ]]; then
 				tips_bettershell
-			elif [[ "$OPTARG" == "revshell" ]]; then
+			elif [[ "$OPTARG" == "lin-revshell" ]]; then
 				tips_revshell
-			elif [[ "$OPTARG" == "wfuzz" ]]; then
+			elif [[ "$OPTARG" == "lin-wfuzz" ]]; then
 				tips_wfuzz
-			elif [[ "$OPTARG" == "file-transfer" ]]; then
+			elif [[ "$OPTARG" == "lin-file-transfer" ]]; then
 				tips_filetransfer
 			elif [[ "$OPTARG" == "ports" ]]; then
 				tips_ports
-			elif [[ "$OPTARG" == "privesc" ]]; then
+			elif [[ "$OPTARG" == "lin-privesc" ]]; then
 				tips_privesc
-			elif [[ "$OPTARG" == "strategy" ]]; then
+			elif [[ "$OPTARG" == "lin-strategy" ]]; then
 				tips_strategy
-			elif [[ "$OPTARG" == "passiverecon" ]]; then
+			elif [[ "$OPTARG" == "lin-passiverecon" ]]; then
 				tips_passiverecon
+			elif [[ "$OPTARG" == "win-privesc" ]]; then
+				tips_winprivesc
 			fi
 			;;
 

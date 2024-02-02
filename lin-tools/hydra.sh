@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo ""
+echo "THC Hydra, username and/or password brute forcing for a particular service"
+echo ""
+echo "	Syntax: hydra -l <username> -P <wordlist> <server> <service> "
+echo "		Some options"
+echo "			-s <port> : specify non-default port for the service"
+echo "			-V : verbose"
+echo "			-t <threads> : number of parallel connections"
+echo "			-d : debugging"
+echo ""
+echo "	(1) Use rockyou wordlist for ftp passwords on IP"
+echo "		hydra -l mark -P /usr/share/wordlists/rockyou.txt <IP> ftp"
+echo ""
+echo "	(2) Use rockyou wordlist for username adam for ssh password on IP"
+echo "		hydra -l adam  -P usr/share/wordlists/rockyou.txt <IP> ssh"
