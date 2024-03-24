@@ -22,17 +22,23 @@ list_tools() {
 	echo ""
 	echo "Tools (-t flag):"
 	echo "	cewl"
+	echo "	curl"
 	echo "	enum4linux"
 	echo "	ffuf"
 	echo "	gobuster"
 	echo "	hashid"
 	echo "	hydra"
-	echo "	kubernetes"
+	echo "	kubectl"
+	echo "	linpeas"
+	echo "	netstat"
 	echo "	nc"
 	echo "	nmap"
+	echo "	ps"
+	echo "	rdp"
 	echo "	rustscan"
 	echo "	searchsploit"
 	echo "	showmount"
+	echo "	stat"
 	echo "	sudo"
 	echo "	unshadow"
 	echo "	wfuzz"
@@ -40,12 +46,16 @@ list_tools() {
 	echo ""
 	echo "Procedures (-g flag):"
 	echo "	lin-bettershell , (Linux) Get a better shell when you have established a revshell"
+	echo "	lin-enumeration , (Linux) Enumerate usernames and passwords on website"
 	echo "	lin-file-transfer ,(Linux) Transfer files or tools"
 	echo "	lin-general , (Linux) General help"
+	echo "	lin-hostrecon , (Linux) Discovery info about host system"
 	echo "	lin-revshell , (Linux) Generating and getting a reverse shell"
 	echo "	lin-privesc , (Linux) Privilege escalation"
 	echo "	lin-passiverecon , (Linux) Passive Reconnaisance"
 	echo "	ports , Which tools can be good to use when specific ports are open?"
+	echo "	lin-portforward"
+	echo "	lin-stealth , How to be more stealthy in an engagement"
 	echo "	lin-strategy , (Linux) A guide to the strategy on how to do a pentest/hack of a box"
 	echo ""
 	echo "	win-privesc , (Windows) Privilege Escalation"
@@ -56,8 +66,44 @@ list_tools() {
 
 }
 
+tips_enumeration() {
+	./lin-guides/enumeration.sh
+}
+
+tips_stealth() {
+	./lin-guides/stealth.sh
+}
+
+func_linpeas() {
+	./lin-tools/linpeas.sh
+}
+
+func_ps() {
+	./lin-tools/ps.sh
+}
+
+func_netstat() {
+	./lin-tools/netstat.sh
+}
+
+tips_hostrecon() {
+	./lin-guides/hostrecon.sh
+}
+
+func_curl() {
+	./lin-tools/curl.sh
+}
+
+tips_portforward() {
+	./lin-guides/portforward.sh
+}
+
+func_stat() {
+	./lin-tools/stat.sh
+}
+
 func_kubernetes() {
-	./lin-tools/kubernetes.sh
+	./lin-tools/kubectl.sh
 }
 
 func_hydra() {
@@ -171,6 +217,16 @@ while getopts "lt:g:f:h" opt; do
 		t)
 			if [[ "$OPTARG" == "gobuster" ]]; then
 				func_gobuster
+			elif [[ "$OPTARG" == "linpeas" ]]; then
+				func_linpeas
+			elif [[ "$OPTARG" == "ps" ]]; then
+				func_ps
+			elif [[ "$OPTARG" == "netstat" ]]; then
+				func_netstat
+			elif [[ "$OPTARG" == "curl" ]]; then
+				func_curl
+			elif [[ "$OPTARG" == "stat" ]]; then
+				func_stat
 			elif [[ "$OPTARG" == "hashid" ]]; then
 				func_hashid
 			elif [[ "$OPTARG" == "kubernetes" ]]; then
@@ -205,6 +261,14 @@ while getopts "lt:g:f:h" opt; do
 		g)
 			if [[ "$OPTARG" == "lin-general" ]]; then
 				tips_general
+			elif [[ "$OPTARG" == "lin-enumeration" ]]; then
+				tips_enumeration
+			elif [[ "$OPTARG" == "lin-stealth" ]]; then
+				tips_stealth
+			elif [[ "$OPTARG" == "lin-hostrecon" ]]; then
+				tips_hostrecon
+			elif [[ "$OPTARG" == "lin-portforward" ]]; then
+				tips_portforward
 			elif [[ "$OPTARG" == "lin-bettershell" ]]; then
 				tips_bettershell
 			elif [[ "$OPTARG" == "lin-revshell" ]]; then

